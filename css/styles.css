@@ -29,7 +29,6 @@ span{
 }
 .navegacionPrincipal{
 
-    padding: 1rem;
     display: flex; /*hay que ponerlo en el padre(acá)para poder usar sus propiedades justified-content*/
     flex-direction:row;/*no hace falta agregarlo porque es el que viene por defecto*/ 
     justify-content: space-between;
@@ -41,8 +40,17 @@ span{
     
     color: var(--blanco);
     text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem;
     
     
+}
+.navegacionPrincipal a:hover{ 
+/*es un pseudo selector por eso los : y el hover es lo que hace que cambie de color cuando 
+te posicionas con el mouse en el enlace*/
+ background-color: var(--primario);   
+ color: var(--oscuro);
 }
 .contenedor{
     
