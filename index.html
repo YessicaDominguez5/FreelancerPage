@@ -7,6 +7,9 @@
     <!--como debe mostrarse el contenido tamaños de texto etc. -->
     <title>Diseñador Freelancer</title>
     <!--título util para el SEO(cuando los usuarios buscan en google con palabras clave para que puedan encontrar tu sitio web)-->
+   <link rel="preload" href="css/normalize.css" as="style">
+   <link rel="stylesheet" href="css/normalize.css">
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Krub:wght@200;400;700&display=swap" rel="stylesheet">
@@ -22,13 +25,15 @@
         <h1>Yessica Domínguez <span>Freelancer</span></h1>
     </header>
 
-    <nav>
-        <a href="#">Inicio</a>
-        <a href="#">Sobre Mi</a>
-        <a href="#">Clientes</a>
-        <a href="#">Contacto</a>
-
-    </nav>
+    <div class="nav-bg">
+        <nav class="navegacionPrincipal contenedor">
+            <a href="#">Inicio</a>
+            <a href="#">Sobre Mi</a>
+            <a href="#">Clientes</a>
+            <a href="#">Contacto</a>
+            
+        </nav>
+    </div>
     <img src="img/hero.jpg">
 
     <section>
