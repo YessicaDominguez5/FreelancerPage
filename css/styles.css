@@ -5,23 +5,43 @@
     --primario:#ffc107;
     --secundario:#0097a7;
     --gris:#757575;
+    --grisClaro:#DFE9F3;
     --fuente-principal:3.8rem;
-    --fuente-secundaria:2rem;
+    --fuente-secundaria:2.8rem;
+    --fuente-h3:1.8rem;
 } /*cuando empieza con : son pseudo selectores. No existe la etiqueta root en html pero se pueden almacenar variables*/
 html{
 
     font-size: 62.5%; /*reinicia los valores para utilizar facilmente los rem*/
+    box-sizing: border-box; /*para que mantenga los tamaños del box model sin esto pasaría 
+    por ej .imagen{ width:200px; padding: 20px; border: 10px;} esto mediría un width de 260px*/
 }
+*, *:before, *:after {
+    box-sizing: inherit;
+  }/*Con el * a todos los elementos de html les va a aplicar box-sizing: border-box; */
 body{
     font-size: 16px; /*reinicia los valores para utilizar facilmente los rem*/
     font-family: "Krub", sans-serif;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%); /*no es una imagen como tal
+    lo que va a hacer es que haga un degradado(gradient) con el color más fuerte al final de la página hasta el blanco 
+    arriba de todo*/
 }
 
 h1{
-    text-align: center;
     font-size: var(--fuente-principal); /*definido en root*/
     
       
+}
+h2{
+    font-size: var(--fuente-secundaria);
+}
+h3{
+    font-size: var(--fuente-h3);
+}
+h1,h2,h3{
+
+    text-align: center;
+
 }
 span{
 
@@ -30,11 +50,29 @@ span{
 .navegacionPrincipal{
 
     display: flex; /*hay que ponerlo en el padre(acá)para poder usar sus propiedades justified-content*/
-    flex-direction:row;/*no hace falta agregarlo porque es el que viene por defecto*/ 
-    justify-content: space-between;
+    flex-direction:column;/*flex-direction:row; es el que viene por defecto*/ 
+    align-items: center;
+   
     
-    
-    
+}
+@media (min-width: 768px){
+     .navegacionPrincipal{
+        flex-direction: row;
+        justify-content: space-between;
+
+
+     }
+}
+.sombra{
+
+    /*contenedor de toda la información debajo de la imágen*/
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(112,112,112,1);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(112,112,112,1);
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,1);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem; /*esquinas redondeadas*/
+
 }
 .navegacionPrincipal a{ /*los a dentro del nav(especificidad)*/
     
@@ -54,9 +92,31 @@ te posicionas con el mouse en el enlace*/
 }
 .contenedor{
     
-    width: 90rem;
+    max-width: 120rem;
     margin: 0 auto;
     
+}
+.boton{
+
+background-color: var(--secundario);
+color: var(--blanco);
+padding: 1rem 3rem;
+margin-top: 1rem; /*separa un poco al botón de Buenos aires,Argentina*/
+font-size: 2rem; 
+text-decoration: none;/*Le saca el subrayado*/
+text-transform: uppercase; /*Lo pasa a mayúscula*/
+font-weight: bold;/*negrita, 700 es lo mismo*/
+border-radius: .5rem;/*esquinas redondeadas*/
+width: 90%; /*para el celu casi toda la pantalla*/
+text-align: center;
+
+}
+@media (min-width: 768px){
+
+   .boton{
+    width: auto;
+
+   }
 }
 .nav-bg{
     
@@ -64,4 +124,91 @@ te posicionas con el mouse en el enlace*/
 
 }
 
+.hero{
 
+background-image: url(../img/hero.jpg);
+background-repeat: no-repeat; /*por default la imagen se repite*/
+background-size: cover;/*para que cubra todo el ancho de la pantalla*/
+height: 450px;
+/*padding: 20px;*/
+position: relative;
+margin-bottom: 2rem; /*que separe la imagen del contenido*/
+
+
+}
+.contenidoHero{
+position:absolute;
+background-color: rgb(0 0 0 /70%); /*el último valor es la transparecia, 
+1 totalmente negro, 0 totalmente transparente*/
+
+width: 100%;/*lo mismo que right:0, left:0*/
+height: 100%; /*lo mismo que top:0, bottom:0*/
+/*pero si tiene padding no toma esa parte*/
+
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+/*alinea tanto horizontal como verticalmente*/
+
+}
+
+.contenidoHero h2, .contenidoHero p{
+
+color: var(--blanco);
+/*Como es el mismo contenido para los 2 con la , lo aplico para el h2 dentro de contenidoHero 
+y el p de contenidoHero*/
+
+}
+@media (min-width: 768px){
+    
+    .servicios{
+    
+    display: grid; /*servicios está en el div que es padre de las 3 sections*/
+    /*el flex pone todo al lado horizontal o verticalmente el grid es como una tabla*/
+    grid-template-columns: repeat(3, 1fr); /*repite 3 veces 1 fracción divide en 3 partes iguales*/
+    column-gap: 2rem;
+
+    }
+}
+
+.servicio{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.servicio h3{
+
+    color: var(--secundario);
+    font-weight: normal; /*o 400 es lo mismo*/
+
+}
+.servicio .iconos{
+/*el circulo amarillo*/
+height: 15rem;
+width: 15rem;
+background-color: var(--primario);
+border-radius: 50%; /*para que sea un circulo*/
+/*los iconos dentro del circulo*/
+display: flex;/*el flex-direction no se pone porque por defecto viene row*/
+justify-content: space-evenly; /*o center*/
+align-items: center;
+}
+.servicio p{
+
+    line-height: 2;/*interlineado*/
+    text-align: center;
+}
+/*Formulario*/
+.formulario{
+
+background-color: var(--gris);
+
+
+}
+.formulario fieldset{
+
+    border: none; /*le saca la linea borde que viene por defecto*/
+}
