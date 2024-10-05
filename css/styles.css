@@ -1,4 +1,7 @@
-
+/*"Crea un Media Querie":{
+		"prefix": "mq",
+		"body": "@media (min-width: $1){\n     $2\n}"
+}*/
 :root{
     --blanco:#ffffff;
     --oscuro:#212121;
@@ -109,6 +112,7 @@ font-weight: bold;/*negrita, 700 es lo mismo*/
 border-radius: .5rem;/*esquinas redondeadas*/
 width: 90%; /*para el celu casi toda la pantalla*/
 text-align: center;
+border: none;
 
 }
 @media (min-width: 768px){
@@ -205,10 +209,84 @@ align-items: center;
 .formulario{
 
 background-color: var(--gris);
+width: min(60rem, 100%); /*utiliza el valor más chico. Ejemplo en una pantalla de compu el 100% va a ser 1160px y como 60rem son 600px 
+va a utilizar 60rem. Pero en el el celu el 100% va a ser por ejemplo 488px entonces va a utilizar el 100%(488px) en lugar de 60rem*/
+margin: 0 auto; /*como no tiene padre con Display:Flex usamos margin*/
+padding: 2rem;
+border-radius: 1rem;/*bordes del formulario redondeados*/
 
 
 }
 .formulario fieldset{
 
     border: none; /*le saca la linea borde que viene por defecto*/
+}
+.formulario legend{
+
+    text-align: center; /*no requiere display:flex como align-items*/
+    font-size: 1.8rem;
+    text-transform: uppercase; /*mayúscula*/
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--primario);
+    
+
+}
+@media (min-width: 768px){
+    
+    .camposFormulario{
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr; /*divide en 2*/
+    column-gap: 1rem; /*separación de columnas*/
+    }
+    .campo:nth-child(3), .campo:nth-child(4){
+        /*como hay 4 clases campo con el nth-child toma el 3ero y 4to en este ej*/
+        grid-column: 1/3; /*que el input abarque de la columna 1 a la 3*/
+    }
+}
+.campo{
+
+    margin-bottom: 1rem;;
+
+}
+
+.campo label{
+
+    color: var(--blanco);
+    display: block; /*acomoda 1 abajo de otro*/
+    font-weight: bold;
+    margin-bottom: .5rem;
+
+
+}
+.campo input, .campo textarea{
+
+    width: 100%;
+    border:none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+.campo textarea{
+
+    height: 20rem;
+}
+.enviar .boton{
+    width:100%;
+}
+.enviar .boton:hover{
+
+    cursor: pointer;
+}
+@media (min-width: 768px){
+    
+    .enviar .boton{
+        width:30%;
+        margin-left: 70%;
+    } 
+   
+}
+.footer{
+
+    text-align: center;
 }
