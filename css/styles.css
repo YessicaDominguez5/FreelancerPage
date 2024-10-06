@@ -18,7 +18,21 @@ html{
     font-size: 62.5%; /*reinicia los valores para utilizar facilmente los rem*/
     box-sizing: border-box; /*para que mantenga los tamaños del box model sin esto pasaría 
     por ej .imagen{ width:200px; padding: 20px; border: 10px;} esto mediría un width de 260px*/
+    scroll-snap-type: y mandatory; /*y para que el scroll sea vertical, x para que sea horizontal*/
 }
+
+/*scroll*/
+.servicios, 
+.navegacionPrincipal, 
+.formulario{
+
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+    /*scrollea sección por sección*/
+  
+}
+
 *, *:before, *:after {
     box-sizing: inherit;
   }/*Con el * a todos los elementos de html les va a aplicar box-sizing: border-box; */
@@ -29,6 +43,8 @@ body{
     lo que va a hacer es que haga un degradado(gradient) con el color más fuerte al final de la página hasta el blanco 
     arriba de todo*/
 }
+
+
 
 h1{
     font-size: var(--fuente-principal); /*definido en root*/
